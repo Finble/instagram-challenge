@@ -1,8 +1,10 @@
 <% if @pictures.any? %>
   
   <% @pictures.each do |picture| %>
-    <h2><%= link_to picture.name, picture_path(picture) %></h2>
-    <%= link_to "Edit #{picture.name}", edit_picture_path(picture) %>
+    <h2><%= link_to picture.name, picture_path(picture) %></h2>  <!--READ/SHOW-->
+    
+    <%= link_to "Edit #{picture.name}", edit_picture_path(picture) %> <!--EDIT-->
+    <%= link_to "Delete #{picture.name}", picture_path(picture), method: :delete %> <!--DELETE-->
   
   <% end %>
 

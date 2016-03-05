@@ -1,8 +1,10 @@
 require 'rails_helper'
 
+# CRUD tests
+
 feature 'pictures' do
   
-  context 'no pictures have been added' do
+  context 'no pictures have been added' do  #Starting position - nothing added
     scenario 'should display a prompt to add a picture' do
       visit '/pictures'
       expect(page).to have_content 'No pictures yet'
@@ -10,7 +12,7 @@ feature 'pictures' do
     end
   end
 
-  context 'pictures have been added' do
+  context 'pictures have been added' do #ADDED ==> RETRIEVE/READ
 	  before do
 	    Picture.create(name: 'Holiday')
 	  end
@@ -22,7 +24,7 @@ feature 'pictures' do
 	  end
 	end
 
-	context 'creating pictures' do
+	context 'creating pictures' do #CREATE ==> CREATE/ADD
 	  
 	  scenario 'prompts user to fill out a form, then displays the new picture' do
 	    visit '/pictures'
@@ -34,7 +36,7 @@ feature 'pictures' do
   	end
   end
 
-  context 'viewing restaurants' do
+  context 'viewing restaurants' do  #VIEW/SHOW ==> READ/VIEW
 
 	  let!(:holiday){Picture.create(name:'Holiday')}
 
@@ -46,7 +48,7 @@ feature 'pictures' do
   	end
 	end
 
-	context 'editing pictures' do
+	context 'editing pictures' do #EDIT ==> UPDATE/EDIT
 
 	  before { Picture.create name: 'Holiday' }
 
@@ -59,4 +61,17 @@ feature 'pictures' do
 	   expect(current_path).to eq '/pictures'
 	  end
 	end
+
+	context 'deleting pictures' do  #DELETE ==> DESTROY/DELETE
+
+  before { Picture.create name: 'Holiday' }
+
+  scenario 'removes a picture when a user clicks a delete link' do
+    visit '/pictures'
+    click_link 'Delete Holiday'
+    expect(page).not_to have_content 'Holiday'
+    expect(page).to have_content 'Picture deleted successfully'
+  end
+
+end
 end
