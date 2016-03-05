@@ -1,17 +1,24 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This README provides an overview of app and covers the steps necessary to get the application up and running.
 
-Things you may want to cover:
+Author: Elaine Finn @ Makers Academy (Jan 2016 cohort)
 
-* Ruby version
+App:  Instagram inspired app, app flow ==> 1.  Set up account (via FB or email).  2.  Sign in.  3.  Post images  4.  Allow others to post comments to your picture.  5.  Allow others to like your picture.
 
-* System dependencies
+MVP1:  CRUD functions + associations for Pictures + Comments + basic validations.
+MVP2:  'User sign up, in and out' set up via DEVISE + user validation set up via OMNIAUTH
+MVP3:  'Pictures uploaded via AWS'
 
-* Configuration
+Points to note:
 
-* Database creation
+* Ruby version - 2.2.1
+
+* System dependencies - as set out in Gemfile.lock.  For testing purposes, 'capybara' + 'rspec-rails' gems added.
+
+* Configuration - app is on RAILS
+
+* Database creation - psql postgres databases(test + development) created, run + migrated with rake commands.
 
 * Database initialization
 

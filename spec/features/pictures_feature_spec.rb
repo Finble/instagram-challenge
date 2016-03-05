@@ -12,7 +12,7 @@ feature 'pictures' do
     end
   end
 
-  context 'pictures have been added' do #ADDED ==> RETRIEVE/READ
+  context 'pictures have been added' do #ADDED ==> RETRIEVE/READ LIST OF ALL PICTURES
 	  before do
 	    Picture.create(name: 'Holiday')
 	  end
@@ -36,7 +36,7 @@ feature 'pictures' do
   	end
   end
 
-  context 'viewing restaurants' do  #VIEW/SHOW ==> READ/VIEW
+  context 'viewing restaurants' do  #VIEW/SHOW ==> READ/VIEW SPECIFIC PICTURE
 
 	  let!(:holiday){Picture.create(name:'Holiday')}
 
@@ -48,7 +48,7 @@ feature 'pictures' do
   	end
 	end
 
-	context 'editing pictures' do #EDIT ==> UPDATE/EDIT
+	context 'editing pictures' do #EDIT ==> UPDATE/EDIT A SPECIFIC PICTURE
 
 	  before { Picture.create name: 'Holiday' }
 
@@ -62,7 +62,7 @@ feature 'pictures' do
 	  end
 	end
 
-	context 'deleting pictures' do  #DELETE ==> DESTROY/DELETE
+	context 'deleting pictures' do  #DELETE ==> DESTROY/DELETE A SPECIFIC PICTURE
 
   before { Picture.create name: 'Holiday' }
 
