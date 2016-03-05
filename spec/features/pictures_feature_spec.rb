@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 feature 'pictures' do
+  
   context 'no pictures have been added' do
     scenario 'should display a prompt to add a picture' do
       visit '/pictures'
@@ -30,6 +31,7 @@ feature 'pictures' do
 	    click_button 'Create Picture'
 	    expect(page).to have_content 'Holiday'
 	    expect(current_path).to eq '/pictures'
+  	end
   end
 
   context 'viewing restaurants' do
@@ -41,8 +43,20 @@ feature 'pictures' do
 	   click_link 'Holiday'
 	   expect(page).to have_content 'Holiday'
 	   expect(current_path).to eq "/pictures/#{holiday.id}"
-  end
+  	end
+	end
 
-end
-end
+	context 'editing pictures' do
+
+	  before { Picture.create name: 'Holiday' }
+
+	  scenario 'let a user edit a picture' do
+	   visit '/pictures'
+	   click_link 'Edit Holiday'
+	   fill_in 'Name', with: 'Holiday in France'
+	   click_button 'Update Picture'
+	   expect(page).to have_content 'Holiday in France'
+	   expect(current_path).to eq '/pictures'
+	  end
+	end
 end
