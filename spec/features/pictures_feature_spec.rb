@@ -36,7 +36,7 @@ feature 'pictures' do
   	end
   end
 
-  context 'viewing restaurants' do  #VIEW/SHOW ==> READ/VIEW SPECIFIC PICTURE
+  context 'viewing pictures' do  #VIEW/SHOW ==> READ/VIEW SPECIFIC PICTURE
 
 	  let!(:holiday){Picture.create(name:'Holiday')}
 
@@ -66,12 +66,11 @@ feature 'pictures' do
 
   before { Picture.create name: 'Holiday' }
 
-  scenario 'removes a picture when a user clicks a delete link' do
-    visit '/pictures'
-    click_link 'Delete Holiday'
-    expect(page).not_to have_content 'Holiday'
-    expect(page).to have_content 'Picture deleted successfully'
-  end
-
-end
+	  scenario 'removes a picture when a user clicks a delete link' do
+	    visit '/pictures'
+	    click_link 'Delete Holiday'
+	    expect(page).not_to have_content 'Holiday'
+	    expect(page).to have_content 'Picture deleted successfully'
+	  end
+	end
 end
