@@ -22,6 +22,7 @@ feature 'pictures' do
 	end
 
 	context 'creating pictures' do
+	  
 	  scenario 'prompts user to fill out a form, then displays the new picture' do
 	    visit '/pictures'
 	    click_link 'Add a picture'
@@ -30,5 +31,18 @@ feature 'pictures' do
 	    expect(page).to have_content 'Holiday'
 	    expect(current_path).to eq '/pictures'
   end
+
+  context 'viewing restaurants' do
+
+	  let!(:holiday){Picture.create(name:'Holiday')}
+
+	  scenario 'lets a user view a picture' do
+	   visit '/pictures'
+	   click_link 'Holiday'
+	   expect(page).to have_content 'Holiday'
+	   expect(current_path).to eq "/pictures/#{holiday.id}"
+  end
+
+end
 end
 end
